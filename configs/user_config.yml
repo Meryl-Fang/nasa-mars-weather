@@ -1,1 +1,10 @@
+plot_title: Scatterplot of Absolute Magnitude by ID (NEOWS Data)
+plot_xlabel: ID
+plot_ylabel: Absolute Magnitude
+plot_size_h: 12
+plot_size_w: 10
+plot_xtick_rotation: 60
+plot_xtick_size: 10
+plot_default_save_path: scatter.png
+plot_color: red
 ntfy-topic: "nasa-neows-assignment"

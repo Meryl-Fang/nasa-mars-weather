@@ -103,7 +103,33 @@ class Analysis():
             logging.error(f"Error when computing mean: {e}")
 
     def plot_data(self, save_path: Optional[str] = None) -> plt.Figure:
-        pass
+        ''' Analyze and plot data
+
+        Generates a plot, display it to screen, and save it to the path in the parameter `save_path`, or 
+        the path from the configuration file if not specified.
+
+        Parameters
+        ----------
+        save_path : str, optional
+            Save path for the generated figure
+
+        Returns
+        -------
+        fig : matplotlib.Figure
+
+        '''
+        fig, ax = plt.subplots(figsize=(self.config["plot_size_h"], self.config["plot_size_w"]))  
+        scatter = ax.scatter(self.dataset['id'], self.dataset['absolute_magnitude_h'],c=self.config["plot_color"])  
+        ax.set_title(self.config["plot_title"])  
+        ax.set_xlabel(self.config["plot_xlabel"])  
+        ax.set_ylabel(self.config["plot_ylabel"])  
+        plt.xticks(rotation=self.config["plot_xtick_rotation"], fontsize=self.config["plot_xtick_size"])
+        if save_path:
+            plt.savefig(save_path)
+        else:
+            plt.savefig(self.config["plot_default_save_path"])  
+        plt.show()
+        return fig
 
     def notify_done(self, message: str) -> None:
         ''' Notify the user that analysis is complete.
@@ -132,3 +158,4 @@ class Analysis():
 nasa_neows = Analysis("configs/job_file.yml")
 nasa_neows.load_data()
 nasa_neows.compute_analysis()
+nasa_neows.plot_data()
