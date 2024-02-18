@@ -15,6 +15,22 @@ logging.basicConfig(
 class Analysis():
 
     def __init__(self, analysis_config: str) -> None:
+        ''' Load config into an Analysis object
+
+        Load system-wide configuration from `configs/system_config.yml`, user configuration from
+        `configs/user_config.yml`, and the specified analysis configuration file
+
+        Parameters
+        ----------
+        analysis_config : str
+            Path to the analysis/job-specific configuration file
+
+        Returns
+        -------
+        analysis_obj : Analysis
+            Analysis object containing consolidated parameters from the configuration files
+        '''
+        
         CONFIG_PATHS = ['configs/system_config.yml', 'configs/user_config.yml']
 
         # add the analysis config to the list of paths to load
@@ -104,7 +120,7 @@ class Analysis():
         None
 
         '''
-        topic = 'nasa-neows-assignment'
+        topic = self.config["nfty-topic"]
         message = message
 
         # send a message through ntfy.sh
