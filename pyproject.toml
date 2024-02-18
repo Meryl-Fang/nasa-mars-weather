@@ -3,13 +3,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = ""
+name = "nasa-neows-assignment"
 authors = [
-    {name = "", email = ""},
+    {name = "MENGYI MERYL FANG", email = "mfang@wellesley.edu"},
 ]
 description = ""
 version = "0.1.0"
-dependencies = [""]
+dependencies = ["matplotlib", "numpy","pandas"]
 requires-python = ">=3.11.0"
 readme = "README.md"
 classifiers = [
